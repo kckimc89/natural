@@ -56,6 +56,7 @@ header{background:linear-gradient(135deg,#dff5d7,#fff0c7);padding:18px 14px 15px
 const KEY='kids_nature_v1_data';
 const PHOTO_DB='kids_nature_v1_photos';
 let data=[], category='전체', parentMode=false, cameraStream=null;
+function $(id){return document.getElementById(id)}
 const starter=[
 ['민들레','꽃','🌼','봄·여름','햇볕이 잘 드는 길가와 잔디밭에서 흔히 볼 수 있는 노란 꽃이에요.','노란 꽃이 둥글게 모여 피고, 꽃이 진 뒤에는 하얀 솜털 씨앗이 생겨요.','씨앗이 바람을 타고 멀리 이동할 수 있어요.','꽃이 진 뒤 씨앗의 모양도 관찰해 보세요.'],
 ['벚꽃','꽃','🌸','봄','봄이 되면 나무 가득 연분홍색과 흰색 꽃이 피어나는 대표적인 봄꽃이에요.','꽃잎이 5장인 작은 꽃들이 여러 송이 모여 피어요.','우리나라 여러 지역의 공원과 길에서 볼 수 있어요.','꽃잎이 떨어진 뒤 잎이 어떻게 나오는지도 살펴보세요.'],
@@ -109,7 +110,7 @@ function makeStarter(){return starter.map((x,i)=>({id:'s'+i,name:x[0],cat:x[1],a
 function load(){try{data=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){data=[]}if(!Array.isArray(data))data=[];const existing=new Set(data.map(x=>x.name));makeStarter().forEach(x=>{if(!existing.has(x.name))data.push(x)});data.forEach(f=>{if(!f.subcat)f.subcat=CAT_SUB[f.name]||'기타';if(!f.defaultPhoto)f.defaultPhoto=defaultPhotoUrl(f.name)});save()}
 function save(){localStorage.setItem(KEY,JSON.stringify(data))}
 function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function setCat(c){category=c;render();window.scrollTo({top:0,behavior:'smooth'})}
+function setCat(c){category=c;if(!['꽃','나무','곤충','새'].includes(c))window.currentSubcat='전체';render();window.scrollTo({top:0,behavior:'smooth'})}
 function bookName(c){return c==='꽃'?'🌸 꽃도감':c==='나무'?'🌳 나무도감':c==='곤충'?'🐞 곤충도감':c==='새'?'🐦 새도감':'🌿 자연도감'}
 function render(){
  const q=($('search').value||'').trim().toLowerCase();
