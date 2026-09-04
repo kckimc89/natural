@@ -363,7 +363,26 @@ function seedExtra(){
 }
 load();
 seedExtra();
-data.forEach(f=>{if(!f.basicSummary)f.basicSummary=f.desc||'';if(!f.basicSource)f.basicSource=f.scientificName?'공개 자료':'어린이 자연도감 기본자료';if(!f.basicUrl)f.basicUrl='';if(!f.scientificName)f.scientificName='';if(!f.family)f.family=f.subcat||''});
+function buildBasicSummary(f){
+ const parts=[];
+ const add=(v)=>{v=String(v||'').trim();if(v&&!parts.includes(v))parts.push(v)};
+ add(f.desc);
+ add(f.feature);
+ add(f.fact);
+ let text=parts.join(' ');
+ if(f.region && text && !text.includes(f.region)) text += ` ${f.region}에서 관찰할 수 있어요.`;
+ if(f.season && f.season!=='관찰 중' && text && !text.includes(f.season)) text += ` ${f.season}에 특히 만나기 좋아요.`;
+ return text || `${f.name}에 대해 직접 관찰하며 알아가는 자연이에요.`;
+}
+// 기존에 제공된 자연도 새로 검색된 자연과 같은 수준의 '기본 설명'을 갖도록 보완합니다.
+// 기존 데이터는 삭제하거나 덮어쓰지 않고, 비어 있거나 짧은 기본설명만 보강합니다.
+data.forEach(f=>{
+ if(!f.basicSummary || String(f.basicSummary).trim().length<120) f.basicSummary=buildBasicSummary(f);
+ if(!f.basicSource)f.basicSource=f.scientificName?'공개 자료':'어린이 자연도감 기본자료';
+ if(!f.basicUrl)f.basicUrl='';
+ if(!f.scientificName)f.scientificName='';
+ if(!f.family)f.family=f.subcat||'';
+});
 save();
 render();
 
