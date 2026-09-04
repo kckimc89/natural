@@ -163,7 +163,6 @@ function openMission(){const missions=[['🌸 꽃 탐험','꽃 3종을 찾아 �
 function openBackup(){openModal(`<h2>💾 자연도감 백업</h2><p>도감 정보와 사진을 안전하게 보관할 수 있어요.</p><div class="actions"><button onclick="exportData()">⬇️ 백업 파일 만들기</button><button onclick="document.getElementById('restoreInput').click()">⬆️ 복원하기</button></div><input id="restoreInput" type="file" accept="application/json" style="display:none" onchange="restoreData(this.files[0])"><p class="small">사진까지 포함한 완전한 백업은 다음 버전에서 강화할 수 있습니다. 현재는 도감 정보와 내가 적은 기록을 안전하게 백업합니다.</p><button class="alt" style="width:100%" onclick="closeModal()">닫기</button>`)}
 function exportData(){const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),data},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='어린이자연도감_백업.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 function restoreData(file){if(!file)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!Array.isArray(o.data))throw 0;const names=new Set(data.map(x=>x.name));o.data.forEach(x=>{if(!names.has(x.name)){data.push(x);names.add(x.name)}});save();closeModal();render();alert('복원이 완료되었습니다. 기존 도감은 삭제하지 않았어요.')}catch(e){alert('백업 파일을 읽을 수 없어요.')}};r.readAsText(file)}
-load();render();
 
 /* ===== V4 확장 기능 ===== */
 const APP_KEY='kids_nature_app_name';
@@ -284,7 +283,6 @@ function restoreDataV4(file){if(!file)return;const r=new FileReader();r.onload=(
 // 홈의 기존 전체 보기 버튼을 없애고, 각 도감 안에서만 전체/즐겨찾기/탐험을 제공
 (function(){
  const tools=document.querySelector('.tools');if(tools)tools.id='tools';
- syncAppTitle();
 })();
 
 
@@ -333,6 +331,7 @@ function seedExtra(){
  const butterfly=data.find(x=>x.name==='나비');if(butterfly)butterfly.defaultPhoto='';
  save();
 }
+load();
 seedExtra();
 render();
 
