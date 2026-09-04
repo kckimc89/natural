@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>🌿 어린이 자연도감</title>
+<meta name="theme-color" content="#dff4df">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="어린이 자연도감">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="192x192" href="icon-192.png">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f7fbf5;color:#26352a;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans KR",sans-serif;font-size:17px}button,input,textarea,select{font:inherit}button{border:0;border-radius:16px;padding:13px 12px;background:#fff;font-weight:800;box-shadow:0 2px 9px #00000012;cursor:pointer}button:active{transform:scale(.98)}
+header{background:linear-gradient(135deg,#dff5d7,#fff0c7);padding:18px 14px 15px;text-align:center;position:sticky;top:0;z-index:20;box-shadow:0 2px 10px #0001}header h1{margin:0;font-size:30px}header .sub{margin:6px 0 12px;font-size:14px;color:#526356}.topBtns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;max-width:900px;margin:auto}.topBtns button{font-size:15px}
+.wrap{max-width:980px;margin:auto;padding:14px}.hero{background:#fff;border-radius:22px;padding:16px;box-shadow:0 2px 10px #0000000d;margin-bottom:13px}.heroTitle{font-size:22px;font-weight:900}.hero p{margin:7px 0 0;line-height:1.7}.categories{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:13px}.category{min-height:115px;text-align:left;padding:15px;border-radius:20px;color:#26352a}.category .big{font-size:44px}.category b{display:block;font-size:21px;margin-top:4px}.category span{font-size:13px;color:#66736a}.flowers{background:#fff0f5}.trees{background:#e8f6e9}.bugs{background:#fff5d8}.birds{background:#eaf3ff}
+.filters{display:flex;gap:8px;overflow:auto;padding:4px 0 10px}.chip{white-space:nowrap;background:#e8eee8;border-radius:999px;padding:10px 14px;font-size:15px;box-shadow:none}.chip.on{background:#26352a;color:white}.tools{display:flex;gap:8px;overflow:auto;margin-bottom:10px}.tools button{white-space:nowrap}.search{width:100%;padding:14px 16px;border:1px solid #dce5dc;border-radius:15px;background:#fff;margin-bottom:10px;font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 3px 12px #00000010;position:relative;cursor:pointer}.pic{height:155px;background:linear-gradient(135deg,#edf7ec,#fff);display:flex;align-items:center;justify-content:center;overflow:hidden}.pic img{width:100%;height:100%;object-fit:cover}.natureArt{font-size:67px;text-align:center;line-height:1.1}.natureArt small{display:block;font-size:12px;color:#7a887d;margin-top:4px}.fav{position:absolute;right:8px;top:8px;z-index:4;background:#fff;border-radius:50%;width:43px;height:43px;padding:0;font-size:24px}.ct{padding:12px}.name{font-size:20px;font-weight:900}.meta{font-size:13px;color:#718077;margin-top:4px}.badge{display:inline-block;margin-top:7px;background:#eef7ee;border-radius:999px;padding:5px 8px;font-size:12px}.empty{text-align:center;padding:55px 10px;color:#748078}
+.modal{position:fixed;inset:0;background:#0008;display:none;align-items:flex-end;justify-content:center;z-index:50}.modal.show{display:flex}.sheet{width:100%;max-width:760px;max-height:94vh;overflow:auto;background:white;border-radius:24px 24px 0 0;padding:20px}.detailHero{position:relative}.detailPhoto{width:100%;max-height:390px;object-fit:cover;border-radius:20px;background:#edf5ed}.detailArt{height:240px;border-radius:20px;background:linear-gradient(135deg,#eaf7e7,#fff7dc);display:flex;align-items:center;justify-content:center;font-size:110px}.detailTitle{font-size:30px;font-weight:900;margin:15px 0 3px}.detailSub{color:#6b786f}.section{border-top:1px solid #edf0ed;padding:14px 0;line-height:1.8}.section h3{margin:0 0 5px;font-size:19px}.fact{background:#f0f8ff;border-radius:16px;padding:13px;margin:10px 0;line-height:1.75}.mission{background:#fff7db;border-radius:16px;padding:13px;line-height:1.75}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.actions .wide{grid-column:1/-1}.alt{background:#edf0ed}.danger{background:#ef5350;color:#fff}
+.field{margin:12px 0}.field label{display:block;font-weight:900;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;padding:13px;border:1px solid #dce3dc;border-radius:13px;background:#fff}.field textarea{min-height:100px}.choiceGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.choice{padding:15px}.cameraBox{background:#111;border-radius:18px;overflow:hidden;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;margin:12px 0}.cameraBox video{width:100%;height:100%;object-fit:cover}.small{font-size:13px;color:#748078}.parentOn{display:inline-block;background:#fff;border-radius:999px;padding:5px 10px;font-size:12px;margin-top:6px}.progress{background:#e6eee6;border-radius:999px;height:12px;overflow:hidden;margin-top:8px}.progress>div{height:100%;background:#69a86a}
+@media(min-width:700px){.grid{grid-template-columns:repeat(4,1fr)}.categories{grid-template-columns:repeat(4,1fr)}.modal{align-items:center}.sheet{border-radius:24px}.category{min-height:150px}}
+@media(max-width:430px){.topBtns button{font-size:14px}.grid{gap:10px}.pic{height:140px}.name{font-size:18px}.actions{grid-template-columns:1fr}.actions .wide{grid-column:auto}}
+</style>
+</head>
+<body>
+<header>
+<h1>🌿 어린이 자연도감</h1>
+<div class="sub">우리 주변에서 만나는 꽃·나무·곤충·새를 발견하고 모아 보는 나만의 자연도감</div>
+<div id="parentState"></div>
+<div class="topBtns">
+<button onclick="openAdd()">🔎 새로운 발견</button>
+<button onclick="toggleParent()" id="parentBtn">🔒 부모님 모드</button>
+<button onclick="openBackup()">💾 백업</button>
+</div>
+</header>
+<div class="wrap">
+<div class="hero">
+<div class="heroTitle">🌱 오늘은 무엇을 찾아볼까요?</div>
+<p>공원, 학교, 집 주변에서 발견한 자연을 사진으로 남겨 보세요. 하나씩 모으면 <b>나만의 자연도감</b>이 됩니다!</p>
+<div class="categories">
+<button class="category flowers" onclick="setCat('꽃')"><div class="big">🌸</div><b>꽃도감</b><span id="count-꽃"></span></button>
+<button class="category trees" onclick="setCat('나무')"><div class="big">🌳</div><b>나무도감</b><span id="count-나무"></span></button>
+<button class="category bugs" onclick="setCat('곤충')"><div class="big">🐞</div><b>곤충도감</b><span id="count-곤충"></span></button>
+<button class="category birds" onclick="setCat('새')"><div class="big">🐦</div><b>새도감</b><span id="count-새"></span></button>
+</div>
+</div>
+<input id="search" class="search" placeholder="🔍 이름·특징·계절로 찾아보기" oninput="render()">
+<div class="tools"><button onclick="setCat('전체')">🌿 전체</button><button onclick="setCat('__FAV__')">⭐ 내가 좋아하는 것</button><button onclick="openMission()">🎯 오늘의 탐험</button></div>
+<div class="filters" id="filters"></div>
+<div id="grid" class="grid"></div>
+</div>
+<div id="modal" class="modal"><div id="sheet" class="sheet"></div></div>
+<script>
+const KEY='kids_nature_v1_data';
+const PHOTO_DB='kids_nature_v1_photos';
+let data=[], category='전체', parentMode=false, cameraStream=null;
+const starter=[
+['민들레','꽃','🌼','봄·여름','햇볕이 잘 드는 길가와 잔디밭에서 흔히 볼 수 있는 노란 꽃이에요.','노란 꽃이 둥글게 모여 피고, 꽃이 진 뒤에는 하얀 솜털 씨앗이 생겨요.','씨앗이 바람을 타고 멀리 이동할 수 있어요.','꽃이 진 뒤 씨앗의 모양도 관찰해 보세요.'],
+['벚꽃','꽃','🌸','봄','봄이 되면 나무 가득 연분홍색과 흰색 꽃이 피어나는 대표적인 봄꽃이에요.','꽃잎이 5장인 작은 꽃들이 여러 송이 모여 피어요.','우리나라 여러 지역의 공원과 길에서 볼 수 있어요.','꽃잎이 떨어진 뒤 잎이 어떻게 나오는지도 살펴보세요.'],
+['해바라기','꽃','🌻','여름·가을','커다란 노란 꽃이 햇빛을 받으며 피는 식물이에요.','꽃 가운데에는 아주 많은 작은 꽃이 모여 있고 바깥쪽에는 노란 꽃잎이 있어요.','씨앗은 사람이 먹기도 하고 기름을 만들기도 해요.','꽃의 가운데와 가장자리의 모양을 비교해 보세요.'],
+['장미','꽃','🌹','봄·여름·가을','향기와 아름다운 꽃으로 사랑받는 대표적인 꽃이에요.','색이 매우 다양하고 줄기에 가시가 있는 종류가 많아요.','정원이나 공원에서 여러 색의 장미를 볼 수 있어요.','가시에 손이 다치지 않도록 눈으로 관찰하세요.'],
+['나팔꽃','꽃','🪻','여름·가을','아침에 나팔 모양의 꽃이 활짝 피는 덩굴식물이에요.','줄기가 다른 물체를 감으며 자라고 꽃은 나팔처럼 생겼어요.','꽃이 피는 시간과 지는 시간을 비교해 보면 재미있어요.','아침과 오후의 꽃 모양을 비교해 보세요.'],
+['단풍나무','나무','🍁','봄·여름·가을','가을에 잎이 빨강·주황·노랑으로 물드는 나무예요.','잎이 손바닥처럼 갈라져 있는 모양이 특징이에요.','가을에는 잎 색깔이 달라지는 과정을 관찰할 수 있어요.','같은 나무에서 색이 다른 잎을 찾아보세요.'],
+['소나무','나무','🌲','사계절','우리 주변에서 흔히 볼 수 있는 늘푸른 나무예요.','바늘처럼 생긴 잎이 여러 개씩 모여 달리고 솔방울이 열려요.','잎이 겨울에도 푸른 상태로 남아 있어요.','솔방울과 잎의 길이를 눈으로 비교해 보세요.'],
+['은행나무','나무','🌳','봄·여름·가을','부채처럼 생긴 잎과 노랗게 물드는 가을 모습으로 유명한 나무예요.','잎 가운데에서 여러 갈래로 퍼지는 선이 보여요.','가을에 노란 잎이 많이 떨어져 길을 덮기도 해요.','잎을 주워 모양을 관찰하고 만져 보세요.'],
+['느티나무','나무','🌳','사계절','공원과 학교에서 큰 그늘을 만들어 주는 친숙한 나무예요.','나뭇가지가 넓게 퍼지고 잎 가장자리에 작은 톱니가 있어요.','오래된 느티나무는 아주 큰 나무로 자랄 수 있어요.','나무 아래와 밖의 온도를 느낌으로 비교해 보세요.'],
+['단풍나무','나무','🍁','봄·여름·가을','손바닥처럼 갈라진 잎을 가진 나무로 가을 단풍이 아름다워요.','잎의 갈라진 부분이 여러 갈래로 나뉘어 있어요.','종류에 따라 잎 모양과 단풍 색이 조금씩 달라요.','주변에서 비슷한 잎을 찾아 비교해 보세요.'],
+['무당벌레','곤충','🐞','봄·여름·가을','작고 둥근 몸에 점무늬가 있는 귀여운 곤충이에요.','딱딱한 앞날개 아래에 얇은 날개가 숨어 있어요.','진딧물 같은 작은 곤충을 먹는 종류가 있어 식물에 도움을 주기도 해요.','손으로 잡지 말고 움직이는 모습을 관찰해 보세요.'],
+['나비','곤충','🦋','봄·여름','알→애벌레→번데기→어른벌레로 모습이 크게 달라지는 곤충이에요.','날개에 비늘가루가 있고 종류마다 무늬가 달라요.','꽃의 꿀을 먹으며 꽃가루받이에 도움을 줄 수 있어요.','날개 무늬와 색을 자세히 살펴보세요.'],
+['꿀벌','곤충','🐝','봄·여름·가을','꽃을 찾아다니며 꿀과 꽃가루를 모으는 곤충이에요.','몸에 노란색과 검은색 줄무늬가 있고 여러 마리가 함께 생활해요.','꽃가루를 옮겨 식물이 열매를 맺는 데 도움을 줘요.','벌을 만지지 말고 멀리서 꽃을 오가는 모습을 보세요.'],
+['잠자리','곤충','🪰','여름·가을','길고 가느다란 몸과 투명한 날개가 특징인 곤충이에요.','두 쌍의 날개가 있고 눈이 매우 커 보여요.','물가에서 어린 시절을 보내는 종류가 많아요.','날개가 움직이는 방향과 날아가는 속도를 관찰해 보세요.'],
+['개미','곤충','🐜','봄·여름·가을','작지만 무리를 지어 생활하는 대표적인 곤충이에요.','머리·가슴·배가 구분되고 더듬이를 사용해 주변을 살펴요.','종류에 따라 먹이와 생활 방식이 달라요.','개미가 어디로 이동하는지 길을 따라가 보세요.'],
+['참새','새','🐦','사계절','우리 주변에서 쉽게 만날 수 있는 작은 새예요.','갈색과 회색빛 깃털을 가지고 있으며 땅과 나무 주변을 오가요.','도시와 농촌 모두에서 볼 수 있어요.','참새가 땅에서 무엇을 찾는지 관찰해 보세요.'],
+['까치','새','🐦','사계절','검정색과 흰색 깃털이 눈에 띄는 친숙한 새예요.','긴 꼬리와 검정·흰색 깃털이 특징이에요.','우리나라에서 흔히 볼 수 있는 새 가운데 하나예요.','울음소리를 듣고 어느 방향에서 들리는지 찾아보세요.'],
+['비둘기','새','🕊️','사계절','도시의 공원이나 광장에서 자주 볼 수 있는 새예요.','회색 몸과 목의 빛나는 색이 특징인 종류가 많아요.','사람이 사는 곳 주변에 잘 적응해 살아가요.','걸을 때 머리가 어떻게 움직이는지 관찰해 보세요.'],
+['제비','새','🐦','봄·여름','따뜻한 계절에 우리나라를 찾아오는 철새예요.','날개가 길고 뾰족하며 꼬리가 갈라져 있어요.','곤충을 잡아먹으며 빠르게 날아다녀요.','하늘을 낮게 날아다니는 모습을 찾아보세요.'],
+['오리','새','🦆','사계절','물가에서 헤엄치며 생활하는 친숙한 새예요.','물갈퀴가 있는 발로 물을 잘 헤엄쳐요.','종류에 따라 부리와 깃털 색이 다양해요.','물 위에서 헤엄치는 방향을 관찰해 보세요.'],
+['참나무','나무','🌳','사계절','도토리를 만드는 나무를 통틀어 부르는 이름이에요.','잎 모양과 도토리 모양이 종류에 따라 달라요.','도토리는 여러 동물의 먹이가 되기도 해요.','바닥에서 도토리와 잎을 찾아 비교해 보세요.'],
+['목련','꽃','🤍','봄','봄에 잎보다 먼저 크고 향기로운 꽃이 피는 나무예요.','꽃잎이 크고 흰색이나 분홍색인 종류가 많아요.','꽃이 진 뒤 잎이 자라기 시작해요.','꽃봉오리와 활짝 핀 꽃의 차이를 찾아보세요.'],
+['코스모스','꽃','🌸','가을','가을 들판을 분홍색과 흰색으로 물들이는 가벼운 느낌의 꽃이에요.','가느다란 줄기와 잎, 여러 색의 꽃이 특징이에요.','햇빛이 좋은 곳에서 잘 자라요.','꽃잎의 수와 색을 세어 보세요.'],
+['토끼풀','꽃','☘️','봄·여름','잔디밭에서 흔히 볼 수 있는 작은 식물이에요.','세 장의 작은 잎이 모여 있는 모습이 특징이에요.','네 장의 잎을 가진 개체가 발견되기도 해요.','잎이 세 장인지 네 장인지 찾아보세요.'],
+['사마귀','곤충','🦗','여름·가을','앞다리를 접고 기다렸다가 먹이를 잡는 곤충이에요.','앞다리가 낫처럼 생겼고 몸이 길쭉해요.','움직이지 않고 주변과 비슷한 색으로 숨어 있을 때가 있어요.','풀 사이에서 몸을 숨기는 모습을 찾아보세요.'],
+['귀뚜라미','곤충','🦗','여름·가을','밤에 맑은 소리를 내는 곤충이에요.','긴 더듬이와 뒷다리가 특징이에요.','날개나 몸을 비벼 소리를 내는 종류가 있어요.','소리가 나는 방향을 조용히 찾아보세요.'],
+['딱정벌레','곤충','🪲','봄·여름·가을','딱딱한 앞날개를 가진 곤충들을 넓게 부르는 말이에요.','단단한 앞날개 아래에 얇은 날개가 접혀 있을 수 있어요.','종류가 매우 많고 생김새도 다양해요.','등의 모양과 색을 눈으로 자세히 관찰하세요.'],
+['제비꽃','꽃','💜','봄','작고 보라색인 꽃을 흔히 볼 수 있는 봄꽃이에요.','꽃의 색이 보라색인 종류가 많고 잎은 둥글거나 심장 모양이에요.','숲 가장자리나 잔디밭에서 발견할 수 있어요.','꽃을 꺾지 않고 주변에 같은 꽃이 더 있는지 찾아보세요.'],
+['진달래','꽃','🌺','봄','봄 산과 공원에서 분홍색 꽃을 피우는 우리에게 익숙한 꽃이에요.','잎이 나오기 전이나 비슷한 시기에 꽃이 피는 모습이 눈에 띄어요.','산에서 군락을 이루어 피기도 해요.','꽃잎 색이 얼마나 진한지 비교해 보세요.'],
+['개나리','꽃','💛','봄','봄이 오면 노란 꽃이 가지를 가득 덮는 관목이에요.','길게 늘어진 가지에 노란 꽃이 여러 개 피어요.','도시의 울타리나 공원에서도 쉽게 볼 수 있어요.','꽃 하나하나의 모양을 가까이서 관찰해 보세요.'],
+['호랑나비','곤충','🦋','봄·여름·가을','노란색과 검은색 무늬가 아름다운 큰 나비예요.','날개에 검은 줄무늬와 꼬리처럼 보이는 부분이 있어요.','꽃을 찾아다니며 꿀을 먹어요.','날개를 펴고 있을 때와 접었을 때를 비교해 보세요.'],
+['직박구리','새','🐦','사계절','공원과 정원에서 자주 볼 수 있는 중간 크기의 새예요.','회갈색 몸과 뺨 주변의 특징적인 색이 눈에 띄어요.','과일과 곤충 등을 먹는 잡식성 새예요.','나무 열매를 먹는 새가 있는지 찾아보세요.']
+];
+function makeStarter(){return starter.map((x,i)=>({id:'s'+i,name:x[0],cat:x[1],art:x[2],season:x[3],desc:x[4],feature:x[5],fact:x[6],observe:x[7],photo:'',favorite:false,place:'',memo:''}))}
+function load(){try{data=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){data=[]}if(!Array.isArray(data))data=[];const existing=new Set(data.map(x=>x.name));makeStarter().forEach(x=>{if(!existing.has(x.name))data.push(x)});save()}
+function save(){localStorage.setItem(KEY,JSON.stringify(data))}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function setCat(c){category=c;render();window.scrollTo({top:0,behavior:'smooth'})}
+function render(){
+ const q=($('search').value||'').trim().toLowerCase();
+ const cats=['전체','꽃','나무','곤충','새','__FAV__'];
+ $('filters').innerHTML=cats.map(c=>`<button class="chip ${category===c?'on':''}" onclick="setCat('${c}')">${c==='__FAV__'?'⭐ 좋아요':c==='전체'?'🌿 전체':c}</button>`).join('');
+ let list=category==='전체'?data:category==='__FAV__'?data.filter(x=>x.favorite):data.filter(x=>x.cat===category);
+ if(q)list=list.filter(x=>[x.name,x.cat,x.season,x.desc,x.feature,x.fact,x.observe,x.place,x.memo].some(v=>String(v||'').toLowerCase().includes(q)));
+ $('grid').innerHTML=list.length?list.map(card).join(''):`<div class="empty">아직 발견한 것이 없어요.<br>밖으로 나가 새로운 자연을 찾아볼까요? 🌱</div>`;
+ ['꽃','나무','곤충','새'].forEach(c=>$('count-'+c).textContent=`${data.filter(x=>x.cat===c).length}종 발견`);
+ $('parentState').innerHTML=parentMode?'<span class="parentOn">🔓 부모님 모드 켜짐</span>':'';
+ list.forEach(loadPhoto);
+}
+function card(f){return `<div class="card" onclick="detail('${esc(f.id)}')"><button class="fav" onclick="event.stopPropagation();toggleFav('${esc(f.id)}')">${f.favorite?'⭐':'☆'}</button><div class="pic" id="pic-${esc(f.id)}"><div class="natureArt">${f.art||iconFor(f.cat)}<small>${f.photo?'사진 불러오는 중…':'사진을 등록해 보세요'}</small></div></div><div class="ct"><div class="name">${esc(f.name)}</div><div class="meta">${esc(f.cat)} · ${esc(f.season||'사계절')}</div>${f.photo?'<span class="badge">📷 내 사진</span>':''}</div></div>`}
+function iconFor(c){return c==='꽃'?'🌸':c==='나무'?'🌳':c==='곤충'?'🐞':'🐦'}
+function toggleFav(id){const f=data.find(x=>x.id===id);if(!f)return;f.favorite=!f.favorite;save();render()}
+async function loadPhoto(f){if(!f.photo)return;try{const src=await getPhoto(f.id);const el=$('pic-'+f.id);if(el&&src)el.innerHTML=`<img src="${src}" alt="${esc(f.name)}">`}catch(e){}}
+function openModal(html){$('sheet').innerHTML=html;$('modal').classList.add('show')}
+function closeModal(){stopCamera();$('modal').classList.remove('show')}
+$('modal').addEventListener('click',e=>{if(e.target===$('modal'))closeModal()})
+function detail(id){const f=data.find(x=>x.id===id);if(!f)return;getPhoto(f.id).then(src=>{openModal(`<div class="detailHero">${src?`<img class="detailPhoto" src="${src}" alt="${esc(f.name)}">`:`<div class="detailArt">${f.art||iconFor(f.cat)}</div>`}</div><div class="detailTitle">${esc(f.name)}</div><div class="detailSub">${esc(f.cat)} · ${esc(f.season||'사계절')}</div><div class="section"><h3>🌿 어떤 자연일까요?</h3>${esc(f.desc||'아직 설명이 없어요.')}</div><div class="section"><h3>👀 생김새와 특징</h3>${esc(f.feature||'주변에서 자세히 관찰해 보세요.')}</div><div class="fact"><b>💡 재미있는 이야기</b><br>${esc(f.fact||'자연에는 재미있는 비밀이 많아요.')}</div><div class="section"><h3>🔎 관찰해 보기</h3>${esc(f.observe||'만지지 않고 눈으로 천천히 관찰해 보세요.')}</div>${f.place||f.memo?`<div class="section"><h3>📝 내가 발견한 기록</h3>${f.place?`📍 발견한 곳: ${esc(f.place)}<br>`:''}${f.memo?`✏️ 메모: ${esc(f.memo)}`:''}</div>`:''}<div class="mission">🌱 <b>자연 탐험 약속</b><br>꽃·나무·곤충·새는 가능한 한 손으로 잡거나 꺾지 말고 눈과 카메라로 관찰해요.</div><div class="actions"><button onclick="photoFor('${esc(f.id)}')">📷 ${f.photo?'사진 바꾸기':'사진 등록'}</button><button onclick="toggleFav('${esc(f.id)}');closeModal()">${f.favorite?'⭐ 좋아요 취소':'⭐ 좋아요'}</button>${parentMode?`<button onclick="editItem('${esc(f.id)}')">✏️ 부모님 설명 수정</button><button class="danger" onclick="deleteItem('${esc(f.id)}')">🗑️ 삭제</button>`:''}<button class="alt wide" onclick="closeModal()">닫기</button></div>`)}).catch(()=>{})}
+function toggleParent(){if(parentMode){parentMode=false;render();return}openModal(`<h2>🔒 부모님 모드</h2><p>도감 설명·카테고리·삭제 기능은 부모님 모드에서 사용할 수 있어요.</p><div class="field"><label>비밀번호</label><input id="pin" type="password" inputmode="numeric" maxlength="6" placeholder="처음에는 0000"></div><div class="actions"><button onclick="unlock()">확인</button><button class="alt" onclick="closeModal()">취소</button></div>`)}
+function unlock(){const pin=$('pin').value;if(pin==='0000'||pin===localStorage.getItem('kids_nature_pin')){parentMode=true;closeModal();render()}else alert('비밀번호가 맞지 않아요. 처음이라면 0000을 입력해 주세요.')}
+function editItem(id){const f=data.find(x=>x.id===id);if(!f)return;openModal(`<h2>✏️ 부모님 설명 수정</h2><div class="field"><label>이름</label><input id="e_name" value="${esc(f.name)}"></div><div class="field"><label>분류</label><select id="e_cat"><option>꽃</option><option>나무</option><option>곤충</option><option>새</option></select></div><div class="field"><label>계절</label><input id="e_season" value="${esc(f.season||'')}"></div><div class="field"><label>어떤 자연일까요?</label><textarea id="e_desc">${esc(f.desc||'')}</textarea></div><div class="field"><label>생김새와 특징</label><textarea id="e_feature">${esc(f.feature||'')}</textarea></div><div class="field"><label>재미있는 이야기</label><textarea id="e_fact">${esc(f.fact||'')}</textarea></div><div class="field"><label>관찰해 보기</label><textarea id="e_observe">${esc(f.observe||'')}</textarea></div><div class="actions"><button onclick="saveEdit('${esc(f.id)}')">저장</button><button class="alt" onclick="detail('${esc(f.id)}')">취소</button></div>`);$('e_cat').value=f.cat}
+function saveEdit(id){const f=data.find(x=>x.id===id);if(!f)return;f.name=$('e_name').value.trim()||f.name;f.cat=$('e_cat').value;f.season=$('e_season').value.trim();f.desc=$('e_desc').value.trim();f.feature=$('e_feature').value.trim();f.fact=$('e_fact').value.trim();f.observe=$('e_observe').value.trim();save();closeModal();render();detail(f.id)}
+function deleteItem(id){if(!parentMode)return;const f=data.find(x=>x.id===id);if(!f)return;if(!confirm(`“${f.name}”을(를) 도감에서 바로 삭제할까요?`))return;data=data.filter(x=>x.id!==id);save();deletePhoto(id).finally(()=>{closeModal();render()})}
+function openAdd(){openModal(`<h2>🔎 새로운 자연 발견</h2><p>아이가 직접 발견한 이름을 적어 도감에 넣어 보세요.</p><div class="field"><label>이름</label><input id="a_name" placeholder="예: 민들레, 잠자리, 참새"></div><div class="field"><label>분류</label><select id="a_cat"><option>꽃</option><option>나무</option><option>곤충</option><option>새</option></select></div><div class="field"><label>발견한 계절</label><input id="a_season" placeholder="예: 봄, 여름, 가을, 사계절"></div><div class="field"><label>어디에서 발견했나요?</label><input id="a_place" placeholder="예: 학교 운동장, 아파트 화단"></div><div class="field"><label>한마디 메모</label><textarea id="a_memo" placeholder="무엇이 재미있었나요?"></textarea></div><div class="actions"><button onclick="addNew()">🌱 도감에 등록</button><button class="alt" onclick="closeModal()">취소</button></div>`)}
+function addNew(){const name=$('a_name').value.trim();if(!name){alert('이름을 먼저 입력해 주세요.');return}if(data.some(x=>x.name===name)){alert('이미 도감에 있는 자연이에요.');return}const cat=$('a_cat').value;const f={id:'u'+Date.now(),name,cat,season:$('a_season').value.trim()||'관찰 중',desc:`${name}에 대해 직접 관찰하며 알아가는 중이에요.`,feature:'사진을 찍고 생김새를 자세히 관찰해 보세요.',fact:'이 자연에 대해 궁금한 점을 부모님과 함께 찾아보세요.',observe:'만지거나 꺾지 않고 안전한 거리에서 관찰해 보세요.',art:iconFor(cat),photo:'',favorite:false,place:$('a_place').value.trim(),memo:$('a_memo').value.trim()};data.push(f);save();closeModal();render();setTimeout(()=>detail(f.id),100)}
+function photoFor(id){openModal(`<h2>📷 사진 등록</h2><div class="choiceGrid"><button class="choice" onclick="openCamera('${esc(id)}')">📸 카메라로 찍기</button><button class="choice" onclick="document.getElementById('fileInput').click()">🖼️ 사진 선택</button></div><input id="fileInput" type="file" accept="image/*" style="display:none" onchange="handleFile('${esc(id)}',this.files[0])"><p class="small">사진은 iPad 안에 저장되며, 이 자연도감의 사진 저장공간만 사용합니다.</p><button class="alt" style="width:100%" onclick="closeModal()">취소</button>`)}
+async function openCamera(id){openModal(`<h2>📸 자연 사진 찍기</h2><div class="cameraBox"><video id="cameraVideo" autoplay playsinline></video></div><canvas id="cameraCanvas" style="display:none"></canvas><div class="actions"><button onclick="takePhoto('${esc(id)}')">📷 촬영</button><button class="alt" onclick="photoFor('${esc(id)}')">뒤로</button></div>`);try{cameraStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});$('cameraVideo').srcObject=cameraStream}catch(e){alert('카메라를 사용할 수 없어요. iPad 설정에서 카메라 권한을 확인하거나 사진 선택을 이용해 주세요.')}}
+function stopCamera(){if(cameraStream){cameraStream.getTracks().forEach(t=>t.stop());cameraStream=null}}
+async function takePhoto(id){const v=$('cameraVideo'),c=$('cameraCanvas');if(!v||!v.videoWidth)return;let w=v.videoWidth,h=v.videoHeight,max=1100;if(w>max){h=Math.round(h*max/w);w=max}c.width=w;c.height=h;c.getContext('2d').drawImage(v,0,0,w,h);const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',.8));await storePhoto(id,blob);stopCamera();closeModal();render();setTimeout(()=>detail(id),100)}
+async function handleFile(id,file){if(!file)return;try{const blob=await compress(file);await storePhoto(id,blob);closeModal();render();setTimeout(()=>detail(id),100)}catch(e){alert('사진 등록에 실패했어요. 다른 사진으로 다시 시도해 주세요.')}}
+function compress(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{let s=Math.min(1,1100/Math.max(im.width,im.height)),w=Math.round(im.width*s),h=Math.round(im.height*s),c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(im,0,0,w,h);c.toBlob(b=>b?resolve(b):reject(), 'image/jpeg',.8)};im.onerror=reject;im.src=r.result};r.onerror=reject;r.readAsDataURL(file)})}
+function openPhotoDB(){return new Promise((resolve,reject)=>{const r=indexedDB.open(PHOTO_DB,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains('photos'))r.result.createObjectStore('photos');};r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+async function storePhoto(id,blob){const db=await openPhotoDB();await new Promise((res,rej)=>{const tx=db.transaction('photos','readwrite');tx.objectStore('photos').put(blob,id);tx.oncomplete=res;tx.onerror=()=>rej(tx.error)});const f=data.find(x=>x.id===id);if(f){f.photo='idb:'+id;save()}}
+async function getPhoto(id){const db=await openPhotoDB();return new Promise((res,rej)=>{const r=db.transaction('photos','readonly').objectStore('photos').get(id);r.onsuccess=()=>{if(!r.result){res('');return}res(URL.createObjectURL(r.result))};r.onerror=()=>rej(r.error)})}
+async function deletePhoto(id){try{const db=await openPhotoDB();await new Promise((res,rej)=>{const tx=db.transaction('photos','readwrite');tx.objectStore('photos').delete(id);tx.oncomplete=res;tx.onerror=()=>rej(tx.error)})}catch(e){}}
+function openMission(){const missions=[['🌸 꽃 탐험','꽃 3종을 찾아 이름과 색을 관찰해 보세요.'],['🌳 나무 탐험','서로 다른 모양의 잎 2장을 찾아보세요.'],['🐞 곤충 탐험','곤충 2종을 찾아 움직임을 관찰해 보세요.'],['🐦 새 탐험','새 한 마리를 찾아 어디로 날아가는지 살펴보세요.']];const m=missions[new Date().getDate()%missions.length];openModal(`<h2>🎯 오늘의 자연 탐험</h2><div class="mission"><div style="font-size:28px">${m[0]}</div><p>${m[1]}</p><b>탐험 약속</b><br>자연을 꺾거나 잡지 않고 눈과 카메라로 관찰해요.</div><div class="actions"><button onclick="closeModal()">탐험하러 가기 🌿</button><button class="alt" onclick="closeModal()">닫기</button></div>`)}
+function openBackup(){openModal(`<h2>💾 자연도감 백업</h2><p>도감 정보와 사진을 안전하게 보관할 수 있어요.</p><div class="actions"><button onclick="exportData()">⬇️ 백업 파일 만들기</button><button onclick="document.getElementById('restoreInput').click()">⬆️ 복원하기</button></div><input id="restoreInput" type="file" accept="application/json" style="display:none" onchange="restoreData(this.files[0])"><p class="small">사진까지 포함한 완전한 백업은 다음 버전에서 강화할 수 있습니다. 현재는 도감 정보와 내가 적은 기록을 안전하게 백업합니다.</p><button class="alt" style="width:100%" onclick="closeModal()">닫기</button>`)}
+function exportData(){const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),data},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='어린이자연도감_백업.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function restoreData(file){if(!file)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!Array.isArray(o.data))throw 0;const names=new Set(data.map(x=>x.name));o.data.forEach(x=>{if(!names.has(x.name)){data.push(x);names.add(x.name)}});save();closeModal();render();alert('복원이 완료되었습니다. 기존 도감은 삭제하지 않았어요.')}catch(e){alert('백업 파일을 읽을 수 없어요.')}};r.readAsText(file)}
+load();render();
+</script>
+</body>
+</html>
