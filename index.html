@@ -55,6 +55,7 @@ header{background:linear-gradient(135deg,#dff5d7,#fff0c7);padding:18px 14px 15px
 const KEY='kids_nature_v1_data';
 const PHOTO_DB='kids_nature_v1_photos';
 let data=[], category='전체', parentMode=false, cameraStream=null;
+const $=id=>document.getElementById(id);
 const starter=[
 ['민들레','꽃','🌼','봄·여름','햇볕이 잘 드는 길가와 잔디밭에서 흔히 볼 수 있는 노란 꽃이에요.','노란 꽃이 둥글게 모여 피고, 꽃이 진 뒤에는 하얀 솜털 씨앗이 생겨요.','씨앗이 바람을 타고 멀리 이동할 수 있어요.','꽃이 진 뒤 씨앗의 모양도 관찰해 보세요.'],
 ['벚꽃','꽃','🌸','봄','봄이 되면 나무 가득 연분홍색과 흰색 꽃이 피어나는 대표적인 봄꽃이에요.','꽃잎이 5장인 작은 꽃들이 여러 송이 모여 피어요.','우리나라 여러 지역의 공원과 길에서 볼 수 있어요.','꽃잎이 떨어진 뒤 잎이 어떻게 나오는지도 살펴보세요.'],
